@@ -20,5 +20,5 @@ data = open('socks.txt', 'r').read()
 data = data.splitlines(True)
 data = data[6:]
 print(data)
-output = [ ('\"http://' + proxy.split(' ')[0] + '\"\n') for proxy in data ]
+output = [ ('\"http://' + proxy.split(' ')[0] + '\",\n') for proxy in data ]
 correct = open('sources/proxy.txt', 'w').write(''.join(output[:-2]))
