@@ -15,7 +15,7 @@ os.system("git config --global github.token %s" % os.getenv('GITHUB_API_TOKEN'))
 
 repo.git.add('.')
 repo.git.commit('-m', '🧃')
-origin = repo.remote(name='origin')
+origin = repo.remote(name='main')
 origin.push()
 
 def update():
