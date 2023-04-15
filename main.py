@@ -1,24 +1,43 @@
-from urllib.request import urlopen
 import os
+import schedule
+import time
+from git import Repo
 
-def download(t_url):
-    response = urlopen(t_url)
-    data = response.read()
-    txt_str = str(data)
-    lines = txt_str.split("\\n")
-    des_url = 'folder/forcast.csv'
-    fx = open(des_url,"w")
-    for line in lines:
-        fx.write(line+ "\n")
-    fx.close()
-    return data
+repo = Repo(os.getcwd())
 
-#target_url = "https://spys.me/socks.txt" 
-#download(target_url)
-os.system('wget https://spys.me/socks.txt -O socks.txt')
-data = open('socks.txt', 'r').read()
-data = data.splitlines(True)
-data = data[6:]
-print(data)
-output = [ ('\"http://' + proxy.split(' ')[0] + '\",\n') for proxy in data ]
-correct = open('sources/proxy.txt', 'w').write(''.join(output[:-2]))
+os.system('git config --global user.name "Robin Augereau"')
+os.system('git config --global user.email "asphalt8fr@gmail.com"')
+
+repo.git.add('.')
+repo.git.commit('-m', 'Commit message')
+origin = repo.remote(name='origin')
+origin.push()
+
+def update():
+    #Download the file
+    os.system('wget https://spys.me/socks.txt -O socks.txt')
+
+    #Open the file
+    data = open('socks.txt', 'r').read()
+    data = data.splitlines(True)
+
+    #Remove the first 6 lines
+    data = data[6:]
+
+    #Version with "," at the end
+    #output = [ ('\"http://' + proxy.split(' ')[0] + '\",\n') for proxy in data ]
+
+    #Version without "," at the end
+    output = [ ('\"http://' + proxy.split(' ')[0] + '\"\n') for proxy in data ]
+
+    #Write the file
+    correct = open('sources/proxy.txt', 'w').write(''.join(output[:-2]))
+
+
+#schedule.every(1).minutes.do(update)
+
+#while True:
+#    schedule.run_pending()
+#   time.sleep(1)
+
+
