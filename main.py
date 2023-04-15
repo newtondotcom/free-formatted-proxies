@@ -12,11 +12,9 @@ os.system("git config --global user.name %s" % os.getenv('NAME'))
 os.system("git config --global user.email %s" % os.getenv('EMAIL'))
 os.system("git config --global github.user %s" % os.getenv('GITHUB_USERNAME'))
 os.system("git config --global github.token %s" % os.getenv('GITHUB_API_TOKEN'))
-
-repo.git.add('.')
-repo.git.commit('-m', '🧃')
-origin = repo.remote(name='origin')
-origin.push()
+os.system("git add .")
+os.system("git commit -m '🧃'")
+os.system("git push")
 
 def update():
     #Download the file
