@@ -8,8 +8,8 @@ load_dotenv()
 
 repo = Repo(os.getcwd())
 
-os.system('git config --global user.name "Robin Augereau"')
-os.system('git config --global user.email "asphalt8fr@gmail.com"')
+os.system("git config --global user.name %s" % os.getenv('NAME'))
+os.system("git config --global user.email %s" % os.getenv('EMAIL'))
 os.system("git config --global github.user %s" % os.getenv('GITHUB_USERNAME'))
 os.system("git config --global github.token %s" % os.getenv('GITHUB_API_TOKEN'))
 
