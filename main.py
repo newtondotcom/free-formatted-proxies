@@ -38,10 +38,10 @@ def update():
     #Write the file
     correct = open('sources/proxy.txt', 'w').write(''.join(output[:-2]))
 
-#schedule.every(1).minutes.do(update)
+schedule.every(1).minutes.do(update)
 
-#while True:
-#    schedule.run_pending()
-#   time.sleep(1)
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
 
