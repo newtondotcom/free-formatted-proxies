@@ -9,7 +9,7 @@ os.system('git config --global user.name "Robin Augereau"')
 os.system('git config --global user.email "asphalt8fr@gmail.com"')
 
 repo.git.add('.')
-repo.git.commit('-m', 'Commit message')
+repo.git.commit('-m', '🧃')
 origin = repo.remote(name='origin')
 origin.push()
 
