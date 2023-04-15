@@ -13,10 +13,7 @@ os.system("git config --global user.email %s" % os.getenv('EMAIL'))
 os.system("git config --global github.user %s" % os.getenv('GITHUB_USERNAME'))
 os.system("git config --global github.token %s" % os.getenv('GITHUB_API_TOKEN'))
 os.system("git config pull.rebase false")
-os.system("git pull")
-os.system("git add .")
-os.system("git commit -m '🧃'")
-os.system("git push")
+
 
 def update():
     #Download the file
@@ -36,9 +33,17 @@ def update():
     output = [ ('\"http://' + proxy.split(' ')[0] + '\"\n') for proxy in data ]
 
     #Write the file
-    correct = open('sources/proxy.txt', 'w').write(''.join(output[:-2]))
+    correct = open('output/proxy.txt', 'w').write(''.join(output[:-2]))
 
-schedule.every(1).minutes.do(update)
+    
+    #os.system("git pull")
+    os.system("git add .")
+    os.system("git commit -m '🧃'")
+    os.system("git push")
+
+update()
+
+schedule.every(60).minutes.do(update)
 
 while True:
     schedule.run_pending()
