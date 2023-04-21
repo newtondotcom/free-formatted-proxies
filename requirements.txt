@@ -1,4 +1,2 @@
 schedule
-GitPython
-github-cli
 python-dotenv
