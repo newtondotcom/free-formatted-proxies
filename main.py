@@ -1,12 +1,9 @@
 import os
 import schedule
 import time
-from git import Repo
 from dotenv import load_dotenv
 
 load_dotenv()
-
-repo = Repo(os.getcwd())
 
 os.system("git config --global user.name %s" % "ROBIÑHO 🧃")
 os.system("git config --global user.email %s" % os.getenv('EMAIL'))
