@@ -1,6 +1,6 @@
 # Free-proxies
 
-This a .py bot updating each 60 minutes a formatted list of free SOCKS5 proxies working .
+This a .py bot updating each 60 minutes a formatted list of free HTTP proxies working .
 
 Proxies are tested and provided [here](https://spys.me/socks.txt). Thanks to his work. 
 
